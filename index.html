@@ -3,257 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toutou Vert - Nourriture Bio et Naturelle</title>
-    <meta name="description" content="La référence bio et naturelle pour chien et chat. Livraison rapide. Fabriqué en France.">
+    <title>Les Secrets de Boubou - Soins naturels pour chiens et chats</title>
+    <meta name="description" content="Soins 100% naturels pour chiens et chats, massages canins. Fabrication Française et artisanale.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- VARIABLES & RESET --- */
+        /* --- VARIABLES & CONFIGURATION --- */
         :root {
-            --color-primary: #2B4F4C;
-            --color-accent: #88d498;
-            --color-accent-hover: #6ecb81;
-            --color-text: #2c2d2e;
+            --color-primary: #1d5b57; /* Vert foncé text */
+            --color-accent: #8aaea2;  /* Vert sauge (Boutons/Footer) */
+            --color-accent-hover: #719589;
+            --color-promo: #efcec7;   /* Rose pâle (Promos/Badges) */
+            --color-text: #43454b;
             --color-bg: #ffffff;
-            --color-light-bg: #f5f1ee;
-            --font-main: 'Poppins', sans-serif;
-            --container-width: 1400px;
+            --font-main: 'Source Sans Pro', sans-serif;
+            --container-width: 1200px;
         }
+
+        /* --- RESET --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--font-main); color: var(--color-text); line-height: 1.5; font-weight: 300; }
+        body { font-family: var(--font-main); color: var(--color-text); line-height: 1.6; font-weight: 400; background: var(--color-bg); }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
         img { max-width: 100%; height: auto; display: block; }
+        
+        /* --- LAYOUT UTILS --- */
         .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
-        h1, h2, h3, h4, h5, h6 { font-weight: 800; color: var(--color-primary); margin-bottom: 1rem; }
-        
-        /* --- UTILS --- */
-        .btn {
-            display: inline-block; padding: 12px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; text-align: center;
-        }
-        .btn-accent { background: var(--color-accent); color: white; }
-        .btn-accent:hover { background: var(--color-accent-hover); }
-        .btn-white { background: white; color: var(--color-text); }
         .text-center { text-align: center; }
-        .section-spacing { padding: 50px 0; }
+        .section-spacing { padding: 60px 0; }
+        h1, h2, h3 { color: var(--color-primary); font-weight: 300; margin-bottom: 1rem; }
+        h2 { font-size: 2.2rem; }
+        strong { font-weight: 600; }
 
-        /* --- HEADER & TOP BAR --- */
-        .announcement-bar { background: var(--color-accent); color: white; padding: 8px 0; font-size: 0.9rem; white-space: nowrap; overflow: hidden; }
-        .marquee { animation: scroll 20s linear infinite; display: inline-block; }
-        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        
-        header { position: sticky; top: 0; background: var(--color-light-bg); z-index: 100; padding: 15px 0; border-bottom: 1px solid #e2e2e2; }
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block; padding: 12px 30px; border-radius: 50px; 
+            font-weight: 600; cursor: pointer; text-align: center; text-transform: uppercase;
+            font-size: 0.9rem; letter-spacing: 0.5px;
+        }
+        .btn-primary { background: var(--color-accent); color: white; border: 2px solid var(--color-accent); }
+        .btn-primary:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+        .btn-outline { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .btn-outline:hover { background: var(--color-primary); color: white; }
+
+        /* --- ANNOUNCEMENT BAR --- */
+        .announcement-bar { background: var(--color-accent); color: white; padding: 10px 0; font-size: 0.9rem; font-weight: 600; }
+
+        /* --- HEADER --- */
+        header { background: #ffffff; padding: 15px 0; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .nav-desktop { display: flex; gap: 20px; font-weight: 500; }
+        .logo img { height: 80px; width: auto; }
+        
+        .nav-desktop { display: flex; gap: 30px; }
+        .nav-desktop a { font-weight: 600; color: #333; font-size: 1rem; }
         .nav-desktop a:hover { color: var(--color-accent); }
-        .logo img { height: 50px; }
-        .header-icons { display: flex; gap: 15px; }
-        .header-icons svg { width: 24px; height: 24px; fill: var(--color-primary); }
+        
+        .header-icons a { margin-left: 15px; font-size: 1.2rem; }
 
         /* --- HERO SECTION --- */
-        .hero { position: relative; height: 80vh; min-height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero img { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
-        .hero-overlay { background: rgba(0,0,0,0.2); position: absolute; inset: 0; }
-        .hero-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 800px; padding: 20px; }
-        .hero h1 { font-size: 3rem; color: white; margin-bottom: 20px; }
-        .badge { background: var(--color-primary); color: white; padding: 5px 15px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+        .hero { 
+            position: relative; 
+            height: 600px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            color: white;
+        }
+        .hero img.hero-bg { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; 
+            filter: brightness(0.7); /* Pour rendre le texte plus lisible */
+        }
+        .hero-content { 
+            position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 40px;
+            /* background: rgba(255, 255, 255, 0.85); Optionnel: fond blanc semi-transparent comme sur le site original */
+            /* color: var(--color-primary); */ 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; color: #fff; font-weight: 700; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; color: #fff; font-weight: 400;}
 
         /* --- PRODUCTS GRID --- */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
-        .product-card { border: 1px solid #e6e6e6; border-radius: 8px; overflow: hidden; transition: box-shadow 0.3s; position: relative; }
-        .product-card:hover { box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .product-image { position: relative; padding-bottom: 125%; overflow: hidden; }
-        .product-image img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .product-card { text-align: center; position: relative; }
+        .product-image { position: relative; border-radius: 8px; overflow: hidden; margin-bottom: 15px; aspect-ratio: 1/1; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
         .product-card:hover .product-image img { transform: scale(1.05); }
-        .product-info { padding: 15px; text-align: left; }
-        .product-title { font-weight: 600; font-size: 1rem; margin-bottom: 5px; display: block; }
-        .product-price { color: var(--color-primary); font-weight: 800; font-size: 1.1rem; }
-        .product-badge { position: absolute; top: 10px; left: 10px; background: #f25555; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        
+        .onsale-badge { 
+            position: absolute; top: 10px; left: 10px; 
+            background: var(--color-promo); color: white; 
+            padding: 5px 10px; border-radius: 3px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; z-index: 10;
+        }
 
-        /* --- FEATURES ICONS --- */
-        .features { display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 20px; }
-        .feature-item { flex: 1; min-width: 200px; padding: 20px; }
-        .feature-item img { height: 60px; margin: 0 auto 15px; }
-        .feature-item p { font-weight: 600; color: var(--color-primary); }
+        .product-title { font-weight: 600; font-size: 1.1rem; color: #333; margin-bottom: 5px; display: block; }
+        .product-price { color: var(--color-text); font-weight: 400; font-size: 1rem; }
+        .product-price del { opacity: 0.5; margin-right: 5px; }
+        .product-price ins { text-decoration: none; font-weight: 700; }
+
+        /* --- ENGAGEMENTS (ICONS) --- */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; }
+        .feature-item img { width: 80px; margin: 0 auto 20px; }
+        .feature-item h4 { font-weight: 600; margin-bottom: 10px; color: var(--color-primary); }
+        .feature-item p { font-size: 0.95rem; }
 
         /* --- FOOTER --- */
-        footer { background: var(--color-primary); color: white; padding: 60px 0 20px; margin-top: 50px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer h4 { color: white; font-size: 1.2rem; margin-bottom: 20px; }
-        .footer ul li { margin-bottom: 10px; }
-        .footer a:hover { text-decoration: underline; }
-        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.9rem; }
+        footer { background: var(--color-accent); color: white; padding: 60px 0 20px; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-widget h4 { color: white; font-weight: 600; border-bottom: 2px solid white; display: inline-block; padding-bottom: 5px; margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-widget p, .footer-widget a { color: #f0f0f0; margin-bottom: 10px; display: block; }
+        .footer-widget a:hover { text-decoration: underline; color: white; }
+        
+        .social-icons { display: flex; gap: 10px; margin-top: 15px; }
+        .social-icons a { background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .social-icons a:hover { background: rgba(255,255,255,0.4); }
 
-        /* --- MOBILE --- */
+        .copyright { text-align: center; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .nav-desktop { display: none; }
+            .nav-desktop { display: none; } /* Simplified for code conciseness */
+            .logo img { height: 60px; }
             .hero h1 { font-size: 2rem; }
-            .header-inner { padding: 0 15px; }
+            .header-inner { flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
 
     <div class="announcement-bar text-center">
-        <div class="container">
-            <span class="marquee">Livraison offerte dès 50€ 🐾 - 10% offerts sur la première commande 🎁 - Programme de fidélité 🐶</span>
-        </div>
+        Soldes d'hiver : Profitez de nos offres magiques ! 🎄✨
     </div>
 
     <header>
         <div class="container header-inner">
-            <div class="mobile-toggle" style="display: none;">☰</div>
-            
             <a href="/" class="logo">
-                <img src="//toutouvert.com/cdn/shop/files/Toutou_Vert_La_r_f_rence_bio_et_naturelle_pour_vos_animaux.png?v=1716650633" alt="Toutou Vert">
+                <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2025/06/Les-Secrets-de-Boubou-7559-x-2800-px-scaled.png" alt="Logo Les Secrets de Boubou">
             </a>
 
             <nav class="nav-desktop">
+                <a href="#">Accueil</a>
+                <a href="#" style="color: var(--color-promo);">Soldes</a>
+                <a href="#">Boutique</a>
                 <a href="#">Chiens</a>
                 <a href="#">Chats</a>
-                <a href="#">Nos marques</a>
-                <a href="#">Fidélité</a>
-                <a href="#">Nos valeurs</a>
+                <a href="#">Vous & Nous</a>
             </nav>
 
-            <div class="header-icons">
-                <a href="#"><svg viewBox="0 0 24 24"><path d="M10.974 17.9841C10.974 19.0977 10.0716 20 8.95805 20C7.84447 20 6.94214 19.0977 6.94214 17.9841C6.94214 16.8705 7.84447 15.9682 8.95805 15.9682C10.0716 15.9682 10.974 16.8705 10.974 17.9841Z"></path><path d="M22.0614 3.12997H9.51503V5.25199H20.7352L19.462 10.6631C19.3843 11.0141 19.1896 11.3286 18.9102 11.555C18.6307 11.7815 18.283 11.9065 17.9235 11.9098H9.22325C8.859 11.9122 8.50518 11.79 8.22003 11.5631C7.93536 11.3362 7.73689 11.0184 7.65826 10.6631L5.43015 0.822281C5.37615 0.588291 5.24447 0.379879 5.05643 0.230674C4.86885 0.0809966 4.63581 0 4.39566 0H0.947388V2.12202H3.54686L5.5893 11.1406C5.77166 11.9662 6.23206 12.7037 6.89377 13.2304C7.55548 13.7566 8.37776 14.0399 9.22325 14.0323H17.9235C18.7643 14.0342 19.5804 13.7481 20.2369 13.2223C20.8934 12.6966 21.3495 11.9619 21.5309 11.1411L23.0959 4.43018C23.1689 4.11519 23.0936 3.78363 22.8923 3.53069C22.6909 3.27776 22.385 3.12997 22.0614 3.12997Z"></path></svg></a>
+            <div class="header-icons nav-desktop">
+                <a href="#">Mon compte</a>
+                <a href="#">Panier (0)</a>
             </div>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <img src="//toutouvert.com/cdn/shop/files/Nourriture_bio_et_naturelle_chien_chat.webp?v=1725377213" alt="Nourriture bio chien chat">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <span class="badge">Partenaire du bien-être animal</span>
-                <h1>Nourriture Bio et Naturelle pour Chien et Chat</h1>
-                <p>Toutou Vert - La référence bio et naturelle pour vos animaux</p>
-                <div style="margin-top: 20px;">
-                    <a href="#" class="btn btn-accent">Nos produits</a>
-                    <a href="#" class="btn btn-white">Promotions</a>
+    <section class="hero">
+        <img class="hero-bg" src="https://lessecretsdeboubou.fr/wp-content/uploads/2026/01/Soldes-les-secrets-de-boubou.jpeg" alt="Soldes Secrets de Boubou">
+        
+        <div class="hero-content">
+            <h1>SOLDES : dernière chance pour recevoir l’édition de Noël</h1>
+            <p>C’est la fin de l’édition de Noël et votre dernière occasion pour profiter de nos soins à prix tout doux avant leur disparition : -20% de réduction sur vos produits préférés.</p>
+            <a href="#" class="btn btn-primary" style="background-color: white; color: var(--color-primary); border: none;">Voir les soins en solde ✨</a>
+        </div>
+    </section>
+
+    <section class="section-spacing container">
+        <div class="text-center">
+            <h2>Vos produits préférés en solde</h2>
+            <p>Soins 100% naturels pour chiens et chats</p>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <span class="onsale-badge">Promo !</span>
+                <div class="product-image">
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2023/11/0S2A1861-carre-324x324.jpg" alt="Baume cicatrisant" loading="lazy">
                 </div>
+                <a href="#" class="product-title">Baume cicatrisant Arnica Bio</a>
+                <div class="product-price">
+                    <del>17.50€</del> <ins>14.99€</ins>
+                </div>
+                <div style="margin-top:10px;"><a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ajouter</a></div>
             </div>
-        </section>
 
-        <section class="section-spacing container">
-            <div class="text-center">
-                <h3>Les meilleurs produits pour Chien et Chat</h3>
+            <div class="product-card">
+                <span class="onsale-badge">Promo !</span>
+                <div class="product-image">
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2023/10/0S2A1857-carre-324x324.jpg" alt="Baume coussinets" loading="lazy">
+                </div>
+                <a href="#" class="product-title">Baume coussinets</a>
+                <div class="product-price">
+                    <del>16.70€</del> <ins>11.90€</ins>
+                </div>
+                <div style="margin-top:10px;"><a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ajouter</a></div>
             </div>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <span class="product-badge">Épuisé</span>
-                    <div class="product-image">
-                        <img src="//toutouvert.com/cdn/shop/files/Vermifuge_Biovetol_Bio_et_Naturel_Chat_20x23_crop_center.png?v=1729865865" alt="Vermifuge" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <a href="#" class="product-title">Biovetol - Vermifuge Bio en Poudre pour Grand Chat</a>
-                        <div class="product-price">10,49€</div>
-                    </div>
-                </div>
 
-                <div class="product-card">
-                    <span class="product-badge" style="background: #88d498;">Promo</span>
-                    <div class="product-image">
-                        <img src="//toutouvert.com/cdn/shop/files/croquettes_alleva_P00230_HOLISTIC-Adult-Chicken_Duck-medium-kg2_20x23_crop_center.jpg?v=1716500251" alt="Croquettes Alleva" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <a href="#" class="product-title">Alleva - Croquettes Sans Céréales Poulet & Canard</a>
-                        <div class="product-price">22,49€</div>
-                    </div>
+            <div class="product-card">
+                <span class="onsale-badge">Promo !</span>
+                <div class="product-image">
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2024/05/0S2A1691-carre-324x324.jpg" alt="Shampoing 2 en 1" loading="lazy">
                 </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="//toutouvert.com/cdn/shop/files/Alleva_Croquettes_Sans_Cereales_Poulet_Canard_Chat_Adulte_Sterilise_20x23_crop_center.png?v=1750414518" alt="Croquettes Chat" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <a href="#" class="product-title">Alleva - Croquettes Chat Adulte Stérilisé</a>
-                        <div class="product-price">8,99€</div>
-                    </div>
+                <a href="#" class="product-title">Shampoing 2 en 1 "Nuage de Douceur"</a>
+                <div class="product-price">
+                    <ins>18.80€</ins>
                 </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="//toutouvert.com/cdn/shop/files/Croquettes_V_g_tariennes_Yarrah_pour_Chien_20x23_crop_center.jpg?v=1744665268" alt="Yarrah Végétarien" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <a href="#" class="product-title">Yarrah - Croquettes Bio Végétariennes</a>
-                        <div class="product-price">15,99€</div>
-                    </div>
-                </div>
+                <div style="margin-top:10px;"><a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ajouter</a></div>
             </div>
-        </section>
 
-        <section class="section-spacing container">
+            <div class="product-card">
+                <span class="onsale-badge">Promo !</span>
+                <div class="product-image">
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2023/11/0S2A1714-carre-324x324.jpg" alt="Soin des oreilles" loading="lazy">
+                </div>
+                <a href="#" class="product-title">Soin des oreilles Thym Bio</a>
+                <div class="product-price">
+                    <del>12.90€</del> <ins>10.30€</ins>
+                </div>
+                <div style="margin-top:10px;"><a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ajouter</a></div>
+            </div>
+        </div>
+        
+        <div class="text-center" style="margin-top: 40px;">
+            <a href="#" class="btn btn-outline">Voir toute la boutique</a>
+        </div>
+    </section>
+
+    <section class="section-spacing" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 40px;">Nos engagements</h2>
             <div class="features">
                 <div class="feature-item">
-                    <img src="//toutouvert.com/cdn/shop/files/nourriture_bio_et_naturelle_pour_chiens_et_chats_France.png?v=1716501684" alt="France">
-                    <p>Entreprise 100% Française</p>
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2025/06/camion-de-livraison.png" alt="Livraison rapide">
+                    <h4>Livraison rapide</h4>
+                    <p>Mondial Relay : 3 jours<br>Domicile : 2 jours ouvrés</p>
                 </div>
                 <div class="feature-item">
-                    <img src="//toutouvert.com/cdn/shop/files/Cadeau.png?v=1716496294" alt="Cadeau">
-                    <p>10% offerts sur votre 1ère commande</p>
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2025/06/cadenas.png" alt="Paiement sécurisé">
+                    <h4>Paiement sécurisé</h4>
+                    <p>Par Carte Bancaire ou PayPal<br>Paiement en 4X disponible</p>
                 </div>
                 <div class="feature-item">
-                    <img src="//toutouvert.com/cdn/shop/files/alimentation_bio_chiens_et_chats_sans_cereales.png?v=1716501669" alt="Qualité">
-                    <p>Produits de qualité certifiée</p>
-                </div>
-                <div class="feature-item">
-                    <img src="//toutouvert.com/cdn/shop/files/nourriture_bio_chiens_et_chats_sans_cereales.png?v=1716501654" alt="Livraison">
-                    <p>Livraison offerte dès 50€</p>
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2025/06/casque-de-musique.png" alt="SAV">
+                    <h4>SAV Réactif</h4>
+                    <p>Une question ? Écrivez-nous à<br>lessecretsdeboubou@gmail.com</p>
                 </div>
             </div>
-        </section>
-
-        <section class="section-spacing" style="background: var(--color-primary); color: white; text-align: center;">
-            <div class="container" style="max-width: 600px;">
-                <h3>Newsletter</h3>
-                <p style="margin-bottom: 20px;">Inscrivez-vous et recevez un code promo de 10%.</p>
-                <form style="display: flex; gap: 10px;">
-                    <input type="email" placeholder="E-mail" style="flex: 1; padding: 12px; border-radius: 6px; border: none;">
-                    <button type="submit" class="btn btn-accent">Envoyer</button>
-                </form>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div>
-                    <img src="//toutouvert.com/cdn/shop/files/TOUTOU_VERT_la_r_f_rence_bio_et_naturelle_pour_vos_animaux_20x11_crop_center.jpg?v=1716501854" alt="Logo Footer" style="width: 150px; margin-bottom: 15px;">
-                    <p class="text-sm">La référence bio et naturelle pour vos animaux.</p>
+                <div class="footer-widget">
+                    <h4>Les Secrets de Boubou</h4>
+                    <p>Boutique artisanale française<br>Experte en zoo cosmétique.</p>
+                    <p>Soins naturels pour chiens et chats, massages canins, découvrez l'univers du bien-être animal.</p>
                 </div>
-                <div>
-                    <h4>Toutou Vert</h4>
-                    <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Chiens</a></li>
-                        <li><a href="#">Chats</a></li>
-                        <li><a href="#">Fidélité</a></li>
-                    </ul>
+                <div class="footer-widget">
+                    <h4>Liens utiles</h4>
+                    <a href="#">Boutique</a>
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">CGV</a>
                 </div>
-                <div>
-                    <h4>Informations</h4>
-                    <ul>
-                        <li><a href="#">Mon compte</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Mentions légales</a></li>
-                    </ul>
-                </div>
-                <div>
+                <div class="footer-widget">
                     <h4>Suivez-nous</h4>
-                    <p>Rejoignez notre communauté sur les réseaux sociaux.</p>
+                    <p>Retrouvez-nous sur les réseaux :</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="TikTok">TK</a>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2026 Toutou Vert, Tous droits réservés.
+                &copy; 2026 Les Secrets de Boubou. Tous droits réservés.
             </div>
         </div>
     </footer>
