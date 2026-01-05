@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toutou Vert - Nourriture Bio et Naturelle</title>
+    <meta name="description" content="La référence bio et naturelle pour chien et chat. Livraison rapide. Fabriqué en France.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --color-primary: #2B4F4C;
+            --color-accent: #88d498;
+            --color-accent-hover: #6ecb81;
+            --color-text: #2c2d2e;
+            --color-bg: #ffffff;
+            --color-light-bg: #f5f1ee;
+            --font-main: 'Poppins', sans-serif;
+            --container-width: 1400px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-main); color: var(--color-text); line-height: 1.5; font-weight: 300; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, h4, h5, h6 { font-weight: 800; color: var(--color-primary); margin-bottom: 1rem; }
+        
+        /* --- UTILS --- */
+        .btn {
+            display: inline-block; padding: 12px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; text-align: center;
+        }
+        .btn-accent { background: var(--color-accent); color: white; }
+        .btn-accent:hover { background: var(--color-accent-hover); }
+        .btn-white { background: white; color: var(--color-text); }
+        .text-center { text-align: center; }
+        .section-spacing { padding: 50px 0; }
+
+        /* --- HEADER & TOP BAR --- */
+        .announcement-bar { background: var(--color-accent); color: white; padding: 8px 0; font-size: 0.9rem; white-space: nowrap; overflow: hidden; }
+        .marquee { animation: scroll 20s linear infinite; display: inline-block; }
+        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        
+        header { position: sticky; top: 0; background: var(--color-light-bg); z-index: 100; padding: 15px 0; border-bottom: 1px solid #e2e2e2; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-desktop { display: flex; gap: 20px; font-weight: 500; }
+        .nav-desktop a:hover { color: var(--color-accent); }
+        .logo img { height: 50px; }
+        .header-icons { display: flex; gap: 15px; }
+        .header-icons svg { width: 24px; height: 24px; fill: var(--color-primary); }
+
+        /* --- HERO SECTION --- */
+        .hero { position: relative; height: 80vh; min-height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero img { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        .hero-overlay { background: rgba(0,0,0,0.2); position: absolute; inset: 0; }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 800px; padding: 20px; }
+        .hero h1 { font-size: 3rem; color: white; margin-bottom: 20px; }
+        .badge { background: var(--color-primary); color: white; padding: 5px 15px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+
+        /* --- PRODUCTS GRID --- */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
+        .product-card { border: 1px solid #e6e6e6; border-radius: 8px; overflow: hidden; transition: box-shadow 0.3s; position: relative; }
+        .product-card:hover { box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .product-image { position: relative; padding-bottom: 125%; overflow: hidden; }
+        .product-image img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .product-info { padding: 15px; text-align: left; }
+        .product-title { font-weight: 600; font-size: 1rem; margin-bottom: 5px; display: block; }
+        .product-price { color: var(--color-primary); font-weight: 800; font-size: 1.1rem; }
+        .product-badge { position: absolute; top: 10px; left: 10px; background: #f25555; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+
+        /* --- FEATURES ICONS --- */
+        .features { display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 20px; }
+        .feature-item { flex: 1; min-width: 200px; padding: 20px; }
+        .feature-item img { height: 60px; margin: 0 auto 15px; }
+        .feature-item p { font-weight: 600; color: var(--color-primary); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--color-primary); color: white; padding: 60px 0 20px; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer h4 { color: white; font-size: 1.2rem; margin-bottom: 20px; }
+        .footer ul li { margin-bottom: 10px; }
+        .footer a:hover { text-decoration: underline; }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.9rem; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .nav-desktop { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .header-inner { padding: 0 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar text-center">
+        <div class="container">
+            <span class="marquee">Livraison offerte dès 50€ 🐾 - 10% offerts sur la première commande 🎁 - Programme de fidélité 🐶</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <div class="mobile-toggle" style="display: none;">☰</div>
+            
+            <a href="/" class="logo">
+                <img src="//toutouvert.com/cdn/shop/files/Toutou_Vert_La_r_f_rence_bio_et_naturelle_pour_vos_animaux.png?v=1716650633" alt="Toutou Vert">
+            </a>
+
+            <nav class="nav-desktop">
+                <a href="#">Chiens</a>
+                <a href="#">Chats</a>
+                <a href="#">Nos marques</a>
+                <a href="#">Fidélité</a>
+                <a href="#">Nos valeurs</a>
+            </nav>
+
+            <div class="header-icons">
+                <a href="#"><svg viewBox="0 0 24 24"><path d="M10.974 17.9841C10.974 19.0977 10.0716 20 8.95805 20C7.84447 20 6.94214 19.0977 6.94214 17.9841C6.94214 16.8705 7.84447 15.9682 8.95805 15.9682C10.0716 15.9682 10.974 16.8705 10.974 17.9841Z"></path><path d="M22.0614 3.12997H9.51503V5.25199H20.7352L19.462 10.6631C19.3843 11.0141 19.1896 11.3286 18.9102 11.555C18.6307 11.7815 18.283 11.9065 17.9235 11.9098H9.22325C8.859 11.9122 8.50518 11.79 8.22003 11.5631C7.93536 11.3362 7.73689 11.0184 7.65826 10.6631L5.43015 0.822281C5.37615 0.588291 5.24447 0.379879 5.05643 0.230674C4.86885 0.0809966 4.63581 0 4.39566 0H0.947388V2.12202H3.54686L5.5893 11.1406C5.77166 11.9662 6.23206 12.7037 6.89377 13.2304C7.55548 13.7566 8.37776 14.0399 9.22325 14.0323H17.9235C18.7643 14.0342 19.5804 13.7481 20.2369 13.2223C20.8934 12.6966 21.3495 11.9619 21.5309 11.1411L23.0959 4.43018C23.1689 4.11519 23.0936 3.78363 22.8923 3.53069C22.6909 3.27776 22.385 3.12997 22.0614 3.12997Z"></path></svg></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="//toutouvert.com/cdn/shop/files/Nourriture_bio_et_naturelle_chien_chat.webp?v=1725377213" alt="Nourriture bio chien chat">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="badge">Partenaire du bien-être animal</span>
+                <h1>Nourriture Bio et Naturelle pour Chien et Chat</h1>
+                <p>Toutou Vert - La référence bio et naturelle pour vos animaux</p>
+                <div style="margin-top: 20px;">
+                    <a href="#" class="btn btn-accent">Nos produits</a>
+                    <a href="#" class="btn btn-white">Promotions</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacing container">
+            <div class="text-center">
+                <h3>Les meilleurs produits pour Chien et Chat</h3>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-badge">Épuisé</span>
+                    <div class="product-image">
+                        <img src="//toutouvert.com/cdn/shop/files/Vermifuge_Biovetol_Bio_et_Naturel_Chat_20x23_crop_center.png?v=1729865865" alt="Vermifuge" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <a href="#" class="product-title">Biovetol - Vermifuge Bio en Poudre pour Grand Chat</a>
+                        <div class="product-price">10,49€</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-badge" style="background: #88d498;">Promo</span>
+                    <div class="product-image">
+                        <img src="//toutouvert.com/cdn/shop/files/croquettes_alleva_P00230_HOLISTIC-Adult-Chicken_Duck-medium-kg2_20x23_crop_center.jpg?v=1716500251" alt="Croquettes Alleva" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <a href="#" class="product-title">Alleva - Croquettes Sans Céréales Poulet & Canard</a>
+                        <div class="product-price">22,49€</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="//toutouvert.com/cdn/shop/files/Alleva_Croquettes_Sans_Cereales_Poulet_Canard_Chat_Adulte_Sterilise_20x23_crop_center.png?v=1750414518" alt="Croquettes Chat" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <a href="#" class="product-title">Alleva - Croquettes Chat Adulte Stérilisé</a>
+                        <div class="product-price">8,99€</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="//toutouvert.com/cdn/shop/files/Croquettes_V_g_tariennes_Yarrah_pour_Chien_20x23_crop_center.jpg?v=1744665268" alt="Yarrah Végétarien" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <a href="#" class="product-title">Yarrah - Croquettes Bio Végétariennes</a>
+                        <div class="product-price">15,99€</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacing container">
+            <div class="features">
+                <div class="feature-item">
+                    <img src="//toutouvert.com/cdn/shop/files/nourriture_bio_et_naturelle_pour_chiens_et_chats_France.png?v=1716501684" alt="France">
+                    <p>Entreprise 100% Française</p>
+                </div>
+                <div class="feature-item">
+                    <img src="//toutouvert.com/cdn/shop/files/Cadeau.png?v=1716496294" alt="Cadeau">
+                    <p>10% offerts sur votre 1ère commande</p>
+                </div>
+                <div class="feature-item">
+                    <img src="//toutouvert.com/cdn/shop/files/alimentation_bio_chiens_et_chats_sans_cereales.png?v=1716501669" alt="Qualité">
+                    <p>Produits de qualité certifiée</p>
+                </div>
+                <div class="feature-item">
+                    <img src="//toutouvert.com/cdn/shop/files/nourriture_bio_chiens_et_chats_sans_cereales.png?v=1716501654" alt="Livraison">
+                    <p>Livraison offerte dès 50€</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacing" style="background: var(--color-primary); color: white; text-align: center;">
+            <div class="container" style="max-width: 600px;">
+                <h3>Newsletter</h3>
+                <p style="margin-bottom: 20px;">Inscrivez-vous et recevez un code promo de 10%.</p>
+                <form style="display: flex; gap: 10px;">
+                    <input type="email" placeholder="E-mail" style="flex: 1; padding: 12px; border-radius: 6px; border: none;">
+                    <button type="submit" class="btn btn-accent">Envoyer</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="//toutouvert.com/cdn/shop/files/TOUTOU_VERT_la_r_f_rence_bio_et_naturelle_pour_vos_animaux_20x11_crop_center.jpg?v=1716501854" alt="Logo Footer" style="width: 150px; margin-bottom: 15px;">
+                    <p class="text-sm">La référence bio et naturelle pour vos animaux.</p>
+                </div>
+                <div>
+                    <h4>Toutou Vert</h4>
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Chiens</a></li>
+                        <li><a href="#">Chats</a></li>
+                        <li><a href="#">Fidélité</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="#">Mon compte</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Suivez-nous</h4>
+                    <p>Rejoignez notre communauté sur les réseaux sociaux.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Toutou Vert, Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
