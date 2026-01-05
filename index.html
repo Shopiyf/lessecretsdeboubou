@@ -3,287 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Secrets de Boubou - Soins naturels pour chiens et chats</title>
-    <meta name="description" content="Soins 100% naturels pour chiens et chats, massages canins. Fabrication Française et artisanale.">
+    <title>Les Secrets de Boubou - L'Excellence Naturelle</title>
+    <meta name="description" content="Soins d'exception 100% naturels pour chiens et chats. Fabrication française artisanale.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
     <style>
-        /* --- VARIABLES & CONFIGURATION --- */
+        /* --- 1. CONFIGURATION & VARIABLES --- */
         :root {
-            --color-primary: #1d5b57; /* Vert foncé text */
-            --color-accent: #8aaea2;  /* Vert sauge (Boutons/Footer) */
-            --color-accent-hover: #719589;
-            --color-promo: #efcec7;   /* Rose pâle (Promos/Badges) */
-            --color-text: #43454b;
-            --color-bg: #ffffff;
-            --font-main: 'Source Sans Pro', sans-serif;
-            --container-width: 1200px;
+            --col-primary: #1d5b57;    /* Vert Empire */
+            --col-primary-light: #2a7a74;
+            --col-accent: #efcec7;     /* Rose Poudré (Charte originale) */
+            --col-text: #43454b;
+            --col-bg: #fdfbf9;         /* Blanc cassé chaud */
+            --col-white: #ffffff;
+            
+            --font-title: 'Playfair Display', serif;
+            --font-body: 'Source Sans Pro', sans-serif;
+            
+            --shadow-sm: 0 4px 6px rgba(29, 91, 87, 0.05);
+            --shadow-md: 0 10px 30px rgba(29, 91, 87, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* --- RESET --- */
+        /* --- 2. RESET & BASE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--font-main); color: var(--color-text); line-height: 1.6; font-weight: 400; background: var(--color-bg); }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: var(--font-body); 
+            color: var(--col-text); 
+            background-color: var(--col-bg); 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
-        img { max-width: 100%; height: auto; display: block; }
+        img { width: 100%; display: block; }
         
-        /* --- LAYOUT UTILS --- */
-        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
-        .text-center { text-align: center; }
-        .section-spacing { padding: 60px 0; }
-        h1, h2, h3 { color: var(--color-primary); font-weight: 300; margin-bottom: 1rem; }
-        h2 { font-size: 2.2rem; }
-        strong { font-weight: 600; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .section-spacing { padding: 100px 0; }
+        
+        h1, h2, h3, h4 { font-family: var(--font-title); color: var(--col-primary); margin-bottom: 1rem; line-height: 1.2; }
+        h2 { font-size: 2.8rem; text-align: center; margin-bottom: 1rem; }
+        .subtitle { text-align: center; color: #888; margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
 
-        /* --- BUTTONS --- */
+        /* Animations au scroll */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- 3. COMPONENTS --- */
         .btn {
-            display: inline-block; padding: 12px 30px; border-radius: 50px; 
-            font-weight: 600; cursor: pointer; text-align: center; text-transform: uppercase;
-            font-size: 0.9rem; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 14px 32px; border-radius: 50px; font-weight: 600; letter-spacing: 0.5px;
+            transition: var(--transition); text-transform: uppercase; font-size: 0.85rem;
+            cursor: pointer; border: none;
         }
-        .btn-primary { background: var(--color-accent); color: white; border: 2px solid var(--color-accent); }
-        .btn-primary:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
-        .btn-outline { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
-        .btn-outline:hover { background: var(--color-primary); color: white; }
+        .btn-primary { 
+            background-color: var(--col-primary); color: var(--col-white); 
+            box-shadow: 0 4px 15px rgba(29, 91, 87, 0.3);
+        }
+        .btn-primary:hover { background-color: var(--col-primary-light); transform: translateY(-2px); }
+        .btn-white { background: var(--col-white); color: var(--col-primary); }
+        .btn-white:hover { background: var(--col-accent); color: var(--col-primary); }
 
-        /* --- ANNOUNCEMENT BAR --- */
-        .announcement-bar { background: var(--color-accent); color: white; padding: 10px 0; font-size: 0.9rem; font-weight: 600; }
-
-        /* --- HEADER --- */
-        header { background: #ffffff; padding: 15px 0; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100; }
+        /* --- 4. HEADER (Glassmorphism) --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 15px 0; transition: var(--transition);
+        }
+        header.scrolled { padding: 10px 0; box-shadow: var(--shadow-sm); }
+        
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 80px; width: auto; }
+        .logo img { height: 60px; width: auto; transition: var(--transition); }
         
-        .nav-desktop { display: flex; gap: 30px; }
-        .nav-desktop a { font-weight: 600; color: #333; font-size: 1rem; }
-        .nav-desktop a:hover { color: var(--color-accent); }
-        
-        .header-icons a { margin-left: 15px; font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { 
+            font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; 
+            position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+            background: var(--col-primary); transition: var(--transition);
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.promo-link { color: #d67d7d; }
 
-        /* --- HERO SECTION --- */
-        .hero { 
-            position: relative; 
-            height: 600px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden; 
-            color: white;
-        }
-        .hero img.hero-bg { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; 
-            filter: brightness(0.7); /* Pour rendre le texte plus lisible */
-        }
-        .hero-content { 
-            position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 40px;
-            /* background: rgba(255, 255, 255, 0.85); Optionnel: fond blanc semi-transparent comme sur le site original */
-            /* color: var(--color-primary); */ 
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; color: #fff; font-weight: 700; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; color: #fff; font-weight: 400;}
-
-        /* --- PRODUCTS GRID --- */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
-        .product-card { text-align: center; position: relative; }
-        .product-image { position: relative; border-radius: 8px; overflow: hidden; margin-bottom: 15px; aspect-ratio: 1/1; }
-        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .product-card:hover .product-image img { transform: scale(1.05); }
-        
-        .onsale-badge { 
-            position: absolute; top: 10px; left: 10px; 
-            background: var(--color-promo); color: white; 
-            padding: 5px 10px; border-radius: 3px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; z-index: 10;
+        .header-actions { display: flex; gap: 20px; align-items: center; }
+        .icon-btn { font-size: 1.4rem; position: relative; }
+        .cart-count { 
+            position: absolute; top: -5px; right: -8px; background: var(--col-accent); 
+            font-size: 0.7rem; width: 18px; height: 18px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; font-weight: bold;
         }
 
-        .product-title { font-weight: 600; font-size: 1.1rem; color: #333; margin-bottom: 5px; display: block; }
-        .product-price { color: var(--color-text); font-weight: 400; font-size: 1rem; }
-        .product-price del { opacity: 0.5; margin-right: 5px; }
-        .product-price ins { text-decoration: none; font-weight: 700; }
-
-        /* --- ENGAGEMENTS (ICONS) --- */
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; }
-        .feature-item img { width: 80px; margin: 0 auto 20px; }
-        .feature-item h4 { font-weight: 600; margin-bottom: 10px; color: var(--color-primary); }
-        .feature-item p { font-size: 0.95rem; }
-
-        /* --- FOOTER --- */
-        footer { background: var(--color-accent); color: white; padding: 60px 0 20px; margin-top: 60px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-widget h4 { color: white; font-weight: 600; border-bottom: 2px solid white; display: inline-block; padding-bottom: 5px; margin-bottom: 20px; font-size: 1.2rem; }
-        .footer-widget p, .footer-widget a { color: #f0f0f0; margin-bottom: 10px; display: block; }
-        .footer-widget a:hover { text-decoration: underline; color: white; }
+        /* Mobile Menu */
+        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; }
         
-        .social-icons { display: flex; gap: 10px; margin-top: 15px; }
-        .social-icons a { background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .social-icons a:hover { background: rgba(255,255,255,0.4); }
+        /* --- 5. HERO SECTION --- */
+        .hero {
+            height: 90vh; min-height: 600px;
+            position: relative; display: flex; align-items: center; justify-content: center;
+            overflow: hidden; margin-top: 0;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+            z-index: -1; animation: zoomSlow 20s infinite alternate;
+        }
+        @keyframes zoomSlow { from { transform: scale(1); } to { transform: scale(1.1); } }
+        
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+        }
+        
+        .hero-content {
+            position: relative; z-index: 1; text-align: center; color: white;
+            max-width: 800px; padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.25rem; margin-bottom: 2rem; font-weight: 300; opacity: 0.9; }
 
-        .copyright { text-align: center; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+        /* --- 6. MARQUEE (Bandeau défilant) --- */
+        .marquee-container { background: var(--col-accent); padding: 12px 0; overflow: hidden; white-space: nowrap; }
+        .marquee-content { display: inline-block; animation: scrollLeft 20s linear infinite; }
+        .marquee-item { display: inline-block; padding: 0 30px; font-weight: 600; color: var(--col-primary); text-transform: uppercase; font-size: 0.85rem; }
+        @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- RESPONSIVE --- */
+        /* --- 7. PRODUCTS GRID --- */
+        .product-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 40px; margin-top: 40px; 
+        }
+        .product-card { 
+            background: white; border-radius: var(--radius); overflow: hidden; 
+            transition: var(--transition); border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); }
+        
+        .product-image { position: relative; padding-bottom: 100%; overflow: hidden; background: #f4f4f4; }
+        .product-image img { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-image img { transform: scale(1.1); }
+        
+        .badge {
+            position: absolute; top: 15px; left: 15px; z-index: 10;
+            background: var(--col-accent); color: var(--col-primary); 
+            padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+        }
+        
+        .quick-add {
+            position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%) translateY(20px);
+            background: white; color: var(--col-primary); padding: 10px 20px; border-radius: 30px;
+            font-size: 0.85rem; font-weight: 600; opacity: 0; transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); white-space: nowrap;
+        }
+        .product-card:hover .quick-add { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .quick-add:hover { background: var(--col-primary); color: white; }
+
+        .product-info { padding: 20px; text-align: center; }
+        .product-cat { font-size: 0.75rem; text-transform: uppercase; color: #999; letter-spacing: 1px; margin-bottom: 5px; }
+        .product-title { font-family: var(--font-title); font-size: 1.2rem; margin-bottom: 8px; font-weight: 600; color: var(--col-text); }
+        .product-price { color: var(--col-primary); font-weight: 700; font-size: 1.1rem; display: flex; gap: 10px; justify-content: center; }
+        .product-price del { color: #aaa; font-weight: 400; text-decoration: line-through; font-size: 0.95rem; }
+
+        /* --- 8. FEATURES (Icon Box) --- */
+        .features-section { background-color: white; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .feature-box { 
+            padding: 30px; text-align: center; border-radius: var(--radius); 
+            background: var(--col-bg); border: 1px solid rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+        .feature-box:hover { background: #fff; box-shadow: var(--shadow-sm); transform: translateY(-5px); }
+        .feature-icon { 
+            font-size: 3rem; color: var(--col-primary); margin-bottom: 15px; 
+            display: inline-block; padding: 15px; background: rgba(29, 91, 87, 0.1); border-radius: 50%;
+        }
+        .feature-box h3 { font-family: var(--font-body); font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
+        .feature-box p { font-size: 0.95rem; color: #666; }
+
+        /* --- 9. NEWSLETTER --- */
+        .newsletter { background: var(--col-primary); color: white; text-align: center; border-radius: 20px; margin: 40px 24px; padding: 60px 20px; position: relative; overflow: hidden; }
+        .newsletter h2, .newsletter h4 { color: white; }
+        .newsletter-form { margin-top: 30px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .newsletter-input { 
+            padding: 15px 25px; border-radius: 50px; border: none; width: 350px; max-width: 100%;
+            outline: none; font-family: var(--font-body);
+        }
+        
+        /* --- 10. FOOTER --- */
+        footer { background: #15423f; color: #e0e0e0; padding: 80px 0 30px; font-size: 0.95rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-col h4 { color: var(--col-white); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 25px; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col a:hover { color: var(--col-accent); padding-left: 5px; }
+        .footer-logo { max-width: 180px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+        
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; font-size: 0.85rem; opacity: 0.7; }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-links { display: none; } /* Pour simplifier ici, normalement on fait un menu JS */
+            .hamburger { display: block; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
-            .nav-desktop { display: none; } /* Simplified for code conciseness */
-            .logo img { height: 60px; }
-            .hero h1 { font-size: 2rem; }
-            .header-inner { flex-wrap: wrap; }
+            .hero h1 { font-size: 2.2rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-bottom { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <div class="announcement-bar text-center">
-        Soldes d'hiver : Profitez de nos offres magiques ! 🎄✨
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item">✨ Livraison offerte dès 50€</span>
+            <span class="marquee-item">🌿 100% Naturel & Bio</span>
+            <span class="marquee-item">🇫🇷 Fabrication Française</span>
+            <span class="marquee-item">🐰 Cruelty Free</span>
+            <span class="marquee-item">✨ Livraison offerte dès 50€</span>
+            <span class="marquee-item">🌿 100% Naturel & Bio</span>
+            <span class="marquee-item">🇫🇷 Fabrication Française</span>
+            <span class="marquee-item">🐰 Cruelty Free</span>
+        </div>
     </div>
 
-    <header>
+    <header id="navbar">
         <div class="container header-inner">
-            <a href="/" class="logo">
+            <div class="hamburger"><i class="ph ph-list"></i></div>
+            
+            <a href="#" class="logo">
                 <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2025/06/Les-Secrets-de-Boubou-7559-x-2800-px-scaled.png" alt="Logo Les Secrets de Boubou">
             </a>
 
-            <nav class="nav-desktop">
+            <nav class="nav-links">
                 <a href="#">Accueil</a>
-                <a href="#" style="color: var(--color-promo);">Soldes</a>
-                <a href="#">Boutique</a>
+                <a href="#" class="promo-link">Soldes</a>
                 <a href="#">Chiens</a>
                 <a href="#">Chats</a>
-                <a href="#">Vous & Nous</a>
+                <a href="#">Coffrets</a>
+                <a href="#">La Marque</a>
             </nav>
 
-            <div class="header-icons nav-desktop">
-                <a href="#">Mon compte</a>
-                <a href="#">Panier (0)</a>
+            <div class="header-actions">
+                <a href="#" class="icon-btn"><i class="ph ph-magnifying-glass"></i></a>
+                <a href="#" class="icon-btn"><i class="ph ph-user"></i></a>
+                <a href="#" class="icon-btn">
+                    <i class="ph ph-shopping-bag"></i>
+                    <span class="cart-count">2</span>
+                </a>
             </div>
         </div>
     </header>
 
     <section class="hero">
         <img class="hero-bg" src="https://lessecretsdeboubou.fr/wp-content/uploads/2026/01/Soldes-les-secrets-de-boubou.jpeg" alt="Soldes Secrets de Boubou">
+        <div class="hero-overlay"></div>
         
-        <div class="hero-content">
-            <h1>SOLDES : dernière chance pour recevoir l’édition de Noël</h1>
-            <p>C’est la fin de l’édition de Noël et votre dernière occasion pour profiter de nos soins à prix tout doux avant leur disparition : -20% de réduction sur vos produits préférés.</p>
-            <a href="#" class="btn btn-primary" style="background-color: white; color: var(--color-primary); border: none;">Voir les soins en solde ✨</a>
+        <div class="hero-content reveal">
+            <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 10px; color: var(--col-accent);">Édition Limitée</div>
+            <h1>Dernière chance pour <br>l'Édition de Noël</h1>
+            <p>Profitez de nos soins d'exception à prix doux avant leur disparition. <br>-20% sur la collection éphémère.</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#" class="btn btn-primary">Accéder aux Soldes</a>
+                <a href="#" class="btn btn-white">Découvrir la boutique</a>
+            </div>
         </div>
     </section>
 
     <section class="section-spacing container">
-        <div class="text-center">
-            <h2>Vos produits préférés en solde</h2>
-            <p>Soins 100% naturels pour chiens et chats</p>
-        </div>
+        <h2 class="reveal">Vos chouchous en solde</h2>
+        <p class="subtitle reveal">Les indispensables pour le bien-être de votre compagnon, validés par notre communauté.</p>
 
-        <div class="products-grid">
-            <div class="product-card">
-                <span class="onsale-badge">Promo !</span>
+        <div class="product-grid">
+            <article class="product-card reveal">
+                <span class="badge">-20%</span>
                 <div class="product-image">
-                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2023/11/0S2A1861-carre-324x324.jpg" alt="Baume cicatrisant" loading="lazy">
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2023/11/0S2A1861-carre-324x324.jpg" alt="Baume Cicatrisant">
+                    <button class="quick-add"><i class="ph ph-plus"></i> Ajouter au panier</button>
                 </div>
-                <a href="#" class="product-title">Baume cicatrisant Arnica Bio</a>
-                <div class="product-price">
-                    <del>17.50€</del> <ins>14.99€</ins>
+                <div class="product-info">
+                    <div class="product-cat">Soin de la peau</div>
+                    <a href="#" class="product-title">Baume Cicatrisant Arnica</a>
+                    <div class="product-price">
+                        <del>17.50€</del> <ins>14.99€</ins>
+                    </div>
                 </div>
-                <div style="margin-top:10px;"><a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ajouter</a></div>
-            </div>
+            </article>
 
-            <div class="product-card">
-                <span class="onsale-badge">Promo !</span>
+            <article class="product-card reveal">
+                <span class="badge">Promo</span>
                 <div class="product-image">
-                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2023/10/0S2A1857-carre-324x324.jpg" alt="Baume coussinets" loading="lazy">
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2023/10/0S2A1857-carre-324x324.jpg" alt="Baume Coussinets">
+                    <button class="quick-add"><i class="ph ph-plus"></i> Ajouter au panier</button>
                 </div>
-                <a href="#" class="product-title">Baume coussinets</a>
-                <div class="product-price">
-                    <del>16.70€</del> <ins>11.90€</ins>
+                <div class="product-info">
+                    <div class="product-cat">Protection</div>
+                    <a href="#" class="product-title">Baume Coussinets</a>
+                    <div class="product-price">
+                        <del>16.70€</del> <ins>11.90€</ins>
+                    </div>
                 </div>
-                <div style="margin-top:10px;"><a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ajouter</a></div>
-            </div>
+            </article>
 
-            <div class="product-card">
-                <span class="onsale-badge">Promo !</span>
+            <article class="product-card reveal">
+                <span class="badge">Nouveauté</span>
                 <div class="product-image">
-                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2024/05/0S2A1691-carre-324x324.jpg" alt="Shampoing 2 en 1" loading="lazy">
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2024/05/0S2A1691-carre-324x324.jpg" alt="Shampoing">
+                    <button class="quick-add"><i class="ph ph-plus"></i> Ajouter au panier</button>
                 </div>
-                <a href="#" class="product-title">Shampoing 2 en 1 "Nuage de Douceur"</a>
-                <div class="product-price">
-                    <ins>18.80€</ins>
+                <div class="product-info">
+                    <div class="product-cat">Hygiène</div>
+                    <a href="#" class="product-title">Shampoing "Nuage de Douceur"</a>
+                    <div class="product-price">
+                        <ins>18.80€</ins>
+                    </div>
                 </div>
-                <div style="margin-top:10px;"><a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ajouter</a></div>
-            </div>
+            </article>
 
-            <div class="product-card">
-                <span class="onsale-badge">Promo !</span>
+            <article class="product-card reveal">
+                <span class="badge">-25%</span>
                 <div class="product-image">
-                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2023/11/0S2A1714-carre-324x324.jpg" alt="Soin des oreilles" loading="lazy">
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2023/11/0S2A1714-carre-324x324.jpg" alt="Soin Oreilles">
+                    <button class="quick-add"><i class="ph ph-plus"></i> Ajouter au panier</button>
                 </div>
-                <a href="#" class="product-title">Soin des oreilles Thym Bio</a>
-                <div class="product-price">
-                    <del>12.90€</del> <ins>10.30€</ins>
+                <div class="product-info">
+                    <div class="product-cat">Hygiène</div>
+                    <a href="#" class="product-title">Soin des Oreilles Thym Bio</a>
+                    <div class="product-price">
+                        <del>12.90€</del> <ins>10.30€</ins>
+                    </div>
                 </div>
-                <div style="margin-top:10px;"><a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ajouter</a></div>
-            </div>
+            </article>
         </div>
         
-        <div class="text-center" style="margin-top: 40px;">
-            <a href="#" class="btn btn-outline">Voir toute la boutique</a>
+        <div class="text-center" style="margin-top: 50px;">
+            <a href="#" class="btn btn-primary" style="background: transparent; color: var(--col-primary); border: 2px solid var(--col-primary);">Voir tous les produits</a>
         </div>
     </section>
 
-    <section class="section-spacing" style="background-color: #f9f9f9;">
+    <section class="features-section section-spacing">
         <div class="container">
-            <h2 class="text-center" style="margin-bottom: 40px;">Nos engagements</h2>
-            <div class="features">
-                <div class="feature-item">
-                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2025/06/camion-de-livraison.png" alt="Livraison rapide">
-                    <h4>Livraison rapide</h4>
-                    <p>Mondial Relay : 3 jours<br>Domicile : 2 jours ouvrés</p>
+            <h2 class="reveal">Pourquoi nous choisir ?</h2>
+            <div class="features-grid reveal" style="margin-top: 50px;">
+                <div class="feature-box">
+                    <i class="ph ph-plant feature-icon"></i>
+                    <h3>100% Naturel & Bio</h3>
+                    <p>Des ingrédients sains, sans produits chimiques, respectueux de la peau de votre animal.</p>
                 </div>
-                <div class="feature-item">
-                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2025/06/cadenas.png" alt="Paiement sécurisé">
-                    <h4>Paiement sécurisé</h4>
-                    <p>Par Carte Bancaire ou PayPal<br>Paiement en 4X disponible</p>
+                <div class="feature-box">
+                    <i class="ph ph-hand-heart feature-icon"></i>
+                    <h3>Fait main en France</h3>
+                    <p>Chaque produit est fabriqué artisanalement dans notre atelier avec amour.</p>
                 </div>
-                <div class="feature-item">
-                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2025/06/casque-de-musique.png" alt="SAV">
-                    <h4>SAV Réactif</h4>
-                    <p>Une question ? Écrivez-nous à<br>lessecretsdeboubou@gmail.com</p>
+                <div class="feature-box">
+                    <i class="ph ph-truck feature-icon"></i>
+                    <h3>Livraison Express</h3>
+                    <p>Expédition soignée en 24/48h. Livraison offerte dès 50€ d'achat.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="ph ph-chat-circle-dots feature-icon"></i>
+                    <h3>Conseils d'Experts</h3>
+                    <p>Une équipe passionnée à votre écoute pour vous guider.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="container reveal">
+        <div class="newsletter">
+            <h2>Rejoignez la meute !</h2>
+            <p style="opacity: 0.9; margin-top: 10px;">Inscrivez-vous à notre newsletter et recevez <strong>-10% sur votre première commande</strong> + nos conseils exclusifs.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Votre adresse email..." class="newsletter-input">
+                <button type="submit" class="btn btn-white" style="color: var(--col-primary);">Je m'inscris</button>
+            </form>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-widget">
-                    <h4>Les Secrets de Boubou</h4>
-                    <p>Boutique artisanale française<br>Experte en zoo cosmétique.</p>
-                    <p>Soins naturels pour chiens et chats, massages canins, découvrez l'univers du bien-être animal.</p>
+                <div class="footer-col">
+                    <img src="https://lessecretsdeboubou.fr/wp-content/uploads/2025/06/Les-Secrets-de-Boubou-7559-x-2800-px-scaled.png" alt="Logo" class="footer-logo">
+                    <p>Les Secrets de Boubou est votre expert en zoo-cosmétique naturelle. Nous prenons soin de ceux qui vous aiment le plus.</p>
                 </div>
-                <div class="footer-widget">
-                    <h4>Liens utiles</h4>
-                    <a href="#">Boutique</a>
-                    <a href="#">Politique de Confidentialité</a>
-                    <a href="#">Mentions Légales</a>
-                    <a href="#">CGV</a>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#">Boutique Chiens</a></li>
+                        <li><a href="#">Boutique Chats</a></li>
+                        <li><a href="#">Coffrets Cadeaux</a></li>
+                        <li><a href="#">Soldes</a></li>
+                    </ul>
                 </div>
-                <div class="footer-widget">
-                    <h4>Suivez-nous</h4>
-                    <p>Retrouvez-nous sur les réseaux :</p>
-                    <div class="social-icons">
-                        <a href="#" aria-label="Instagram">IG</a>
-                        <a href="#" aria-label="Facebook">FB</a>
-                        <a href="#" aria-label="TikTok">TK</a>
+                <div class="footer-col">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="#">Notre Histoire</a></li>
+                        <li><a href="#">Blog Conseils</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Mentions Légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nous suivre</h4>
+                    <p>Rejoignez notre communauté de passionnés :</p>
+                    <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 1.5rem;">
+                        <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#"><i class="ph ph-facebook-logo"></i></a>
+                        <a href="#"><i class="ph ph-tiktok-logo"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="copyright">
-                &copy; 2026 Les Secrets de Boubou. Tous droits réservés.
+            
+            <div class="footer-bottom">
+                <span>&copy; 2026 Les Secrets de Boubou. Tous droits réservés.</span>
+                <span style="display: flex; gap: 10px;">
+                    <i class="ph ph-credit-card"></i>
+                    <i class="ph ph-paypal-logo"></i>
+                </span>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Header Sticky Effect
+        const header = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Reveal Animation on Scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+            
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Trigger once on load
+        revealOnScroll();
+    </script>
 
 </body>
 </html>
